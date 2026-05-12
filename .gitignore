@@ -1,0 +1,12 @@
+.DS_Store
+build/
+build-*/
+.qtc_clangd/
+CMakeUserPresets.json
+
+data/nutrient_tracker.sqlite
+data/usda/
+.qtcreator/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
