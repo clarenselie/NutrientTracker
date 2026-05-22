@@ -19,6 +19,7 @@ set(PROJECT_SOURCES
     src/data/DatabaseManager.cpp
     src/data/USDAImporter.h
     src/data/USDAImporter.cpp
+    src/core/CoreComponent.h
     src/core/InputParser.h
     src/core/InputParser.cpp
     src/core/FoodMatcher.h

@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1250" viewBox="0 0 1700 1250">
+  <defs>
+    <style>
+      .bg { fill: #f4f1f7; }
+      .title { font: 700 36px Arial, sans-serif; fill: #172033; }
+      .note { font: 600 17px Arial, sans-serif; fill: #475569; }
+      .box { fill: #eef8f5; stroke: #4aa3a1; stroke-width: 2; rx: 6; }
+      .head { fill: #fff2cf; stroke: #4aa3a1; stroke-width: 2; }
+      .name { font: 700 18px Arial, sans-serif; fill: #172033; }
+      .txt { font: 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 13px Arial, sans-serif; fill: #475569; }
+      .inherit { stroke: #b45353; stroke-width: 2.7; fill: none; marker-end: url(#tri); }
+      .assoc { stroke: #b45353; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .comp { stroke: #b45353; stroke-width: 2.5; fill: none; marker-end: url(#diamond); }
+      .label { font: 13px Arial, sans-serif; fill: #7f1d1d; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b45353"/>
+    </marker>
+    <marker id="tri" viewBox="0 0 14 12" refX="13" refY="6" markerWidth="11" markerHeight="10" orient="auto">
+      <path d="M1,6 L13,1 L13,11 z" fill="#f4f1f7" stroke="#b45353" stroke-width="2"/>
+    </marker>
+    <marker id="diamond" viewBox="0 0 14 14" refX="13" refY="7" markerWidth="11" markerHeight="11" orient="auto">
+      <path d="M1,7 L7,1 L13,7 L7,13 z" fill="#f4f1f7" stroke="#b45353" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1700" height="1250"/>
+  <text class="title" x="850" y="50" text-anchor="middle">Nutrient Tracker App - Updated UML Representation</text>
+  <text class="note" x="850" y="82" text-anchor="middle">Includes Qt inheritance, custom non-Qt inheritance, core logic, database layer, and model structs</text>
+
+  <!-- Parent classes -->
+  <rect class="box" x="80" y="135" width="245" height="95"/>
+  <rect class="head" x="80" y="135" width="245" height="34"/>
+  <text class="name" x="202" y="158" text-anchor="middle">QMainWindow</text>
+  <text class="txt" x="100" y="195">Qt parent class for</text>
+  <text class="txt" x="100" y="215">main application windows</text>
+
+  <rect class="box" x="365" y="135" width="245" height="95"/>
+  <rect class="head" x="365" y="135" width="245" height="34"/>
+  <text class="name" x="487" y="158" text-anchor="middle">QWidget</text>
+  <text class="txt" x="385" y="195">Qt parent class for</text>
+  <text class="txt" x="385" y="215">visual interface widgets</text>
+
+  <rect class="box" x="650" y="135" width="290" height="115"/>
+  <rect class="head" x="650" y="135" width="290" height="34"/>
+  <text class="name" x="795" y="158" text-anchor="middle">CoreComponent</text>
+  <text class="txt" x="670" y="193">+ virtual ~CoreComponent()</text>
+  <text class="txt" x="670" y="217">+ componentName() : QString</text>
+  <text class="small" x="670" y="238">Custom non-Qt parent class</text>
+
+  <!-- UI classes -->
+  <rect class="box" x="80" y="330" width="300" height="185"/>
+  <rect class="head" x="80" y="330" width="300" height="34"/>
+  <text class="name" x="230" y="353" text-anchor="middle">MainWindow</text>
+  <text class="txt" x="100" y="388">- QStackedWidget* m_rootPages</text>
+  <text class="txt" x="100" y="412">- WelcomePage* m_welcomePage</text>
+  <text class="txt" x="100" y="436">- MainPage* m_mainPage</text>
+  <text class="txt" x="100" y="468">+ showApplication() : void</text>
+  <text class="txt" x="100" y="492">+ showPage(int) : void</text>
+
+  <rect class="box" x="420" y="330" width="285" height="150"/>
+  <rect class="head" x="420" y="330" width="285" height="34"/>
+  <text class="name" x="562" y="353" text-anchor="middle">WelcomePage</text>
+  <text class="txt" x="440" y="388">+ WelcomePage(QWidget*)</text>
+  <text class="txt" x="440" y="412">+ startRequested() signal</text>
+  <text class="small" x="440" y="444">Displays project intro page</text>
+
+  <rect class="box" x="745" y="330" width="360" height="225"/>
+  <rect class="head" x="745" y="330" width="360" height="34"/>
+  <text class="name" x="925" y="353" text-anchor="middle">MainPage</text>
+  <text class="txt" x="765" y="388">- DatabaseManager m_databaseManager</text>
+  <text class="txt" x="765" y="412">- MealAnalyzer m_mealAnalyzer</text>
+  <text class="txt" x="765" y="436">- QVector&lt;AnalyzedFoodItem&gt; m_loggedFoods</text>
+  <text class="txt" x="765" y="468">+ setupFoodDatabase() : void</text>
+  <text class="txt" x="765" y="492">+ handleFoodInput(bool) : void</text>
+  <text class="txt" x="765" y="516">+ refreshDashboard() : void</text>
+
+  <rect class="box" x="1145" y="330" width="255" height="150"/>
+  <rect class="head" x="1145" y="330" width="255" height="34"/>
+  <text class="name" x="1272" y="353" text-anchor="middle">CalorieRing</text>
+  <text class="txt" x="1165" y="388">- int m_progress</text>
+  <text class="txt" x="1165" y="412">- int m_remaining</text>
+  <text class="txt" x="1165" y="436"># paintEvent(QPaintEvent*)</text>
+
+  <rect class="box" x="1435" y="330" width="200" height="110"/>
+  <rect class="head" x="1435" y="330" width="200" height="34"/>
+  <text class="name" x="1535" y="353" text-anchor="middle">AboutPage</text>
+  <text class="txt" x="1455" y="388">+ AboutPage()</text>
+  <text class="small" x="1455" y="414">Simple info page</text>
+
+  <!-- Core classes -->
+  <rect class="box" x="80" y="650" width="270" height="145"/>
+  <rect class="head" x="80" y="650" width="270" height="34"/>
+  <text class="name" x="215" y="673" text-anchor="middle">InputParser</text>
+  <text class="txt" x="100" y="708">+ componentName() : QString</text>
+  <text class="txt" x="100" y="732">+ parse(QString)</text>
+  <text class="txt" x="100" y="756">- normalizeUnit(QString)</text>
+  <text class="small" x="100" y="782">Turns user text into food items</text>
+
+  <rect class="box" x="390" y="650" width="290" height="145"/>
+  <rect class="head" x="390" y="650" width="290" height="34"/>
+  <text class="name" x="535" y="673" text-anchor="middle">FoodMatcher</text>
+  <text class="txt" x="410" y="708">+ componentName() : QString</text>
+  <text class="txt" x="410" y="732">+ match(ParsedFoodItem)</text>
+  <text class="txt" x="410" y="756">- scoreCandidate(...)</text>
+  <text class="small" x="410" y="782">Finds best database food</text>
+
+  <rect class="box" x="720" y="650" width="290" height="145"/>
+  <rect class="head" x="720" y="650" width="290" height="34"/>
+  <text class="name" x="865" y="673" text-anchor="middle">UnitConverter</text>
+  <text class="txt" x="740" y="708">+ componentName() : QString</text>
+  <text class="txt" x="740" y="732">+ toGrams(...)</text>
+  <text class="txt" x="740" y="756">throws invalid_argument</text>
+  <text class="small" x="740" y="782">Converts units to grams</text>
+
+  <rect class="box" x="1050" y="650" width="350" height="205"/>
+  <rect class="head" x="1050" y="650" width="350" height="34"/>
+  <text class="name" x="1225" y="673" text-anchor="middle">MealAnalyzer</text>
+  <text class="txt" x="1070" y="708">- DatabaseManager&amp; m_databaseManager</text>
+  <text class="txt" x="1070" y="732">- InputParser m_parser</text>
+  <text class="txt" x="1070" y="756">- FoodMatcher m_matcher</text>
+  <text class="txt" x="1070" y="780">- UnitConverter m_converter</text>
+  <text class="txt" x="1070" y="804">- NutrientEngine m_engine</text>
+  <text class="txt" x="1070" y="832">+ analyze(QString) : AnalysisResult</text>
+
+  <rect class="box" x="1435" y="650" width="220" height="145"/>
+  <rect class="head" x="1435" y="650" width="220" height="34"/>
+  <text class="name" x="1545" y="673" text-anchor="middle">NutrientEngine</text>
+  <text class="txt" x="1455" y="708">+ scaleToGrams(...)</text>
+  <text class="txt" x="1455" y="732">+ calculateTotals(...)</text>
+  <text class="small" x="1455" y="764">Calculates nutrient totals</text>
+
+  <!-- Data and model classes -->
+  <rect class="box" x="210" y="970" width="390" height="185"/>
+  <rect class="head" x="210" y="970" width="390" height="34"/>
+  <text class="name" x="405" y="993" text-anchor="middle">DatabaseManager</text>
+  <text class="txt" x="230" y="1028">- QSqlDatabase m_db</text>
+  <text class="txt" x="230" y="1052">+ initDatabase(QString*) : bool</text>
+  <text class="txt" x="230" y="1076">+ searchFoods(QString, QString)</text>
+  <text class="txt" x="230" y="1100">+ getFoodNutrients(int)</text>
+  <text class="txt" x="230" y="1124">+ beginTransaction() / commitTransaction()</text>
+
+  <rect class="box" x="655" y="970" width="390" height="185"/>
+  <rect class="head" x="655" y="970" width="390" height="34"/>
+  <text class="name" x="850" y="993" text-anchor="middle">USDAImporter</text>
+  <text class="txt" x="675" y="1028">- DatabaseManager&amp; m_databaseManager</text>
+  <text class="txt" x="675" y="1052">- QHash&lt;int, QString&gt; categories</text>
+  <text class="txt" x="675" y="1076">+ importCsvDirectory(QString)</text>
+  <text class="txt" x="675" y="1100">- importFoods() / importNutrients()</text>
+  <text class="txt" x="675" y="1124">- forEachCsvRow(...)</text>
+
+  <rect class="box" x="1100" y="970" width="390" height="185"/>
+  <rect class="head" x="1100" y="970" width="390" height="34"/>
+  <text class="name" x="1295" y="993" text-anchor="middle">Model Structs</text>
+  <text class="txt" x="1120" y="1028">ParsedFoodItem</text>
+  <text class="txt" x="1120" y="1052">FoodRecord</text>
+  <text class="txt" x="1120" y="1076">NutrientValue</text>
+  <text class="txt" x="1120" y="1100">AnalyzedFoodItem</text>
+  <text class="txt" x="1120" y="1124">AnalysisResult</text>
+
+  <!-- Inheritance arrows -->
+  <path class="inherit" d="M230 330 L205 230"/>
+  <path class="inherit" d="M562 330 L490 230"/>
+  <path class="inherit" d="M925 330 L500 230"/>
+  <path class="inherit" d="M1272 330 L505 230"/>
+  <path class="inherit" d="M1535 330 L510 230"/>
+  <text class="label" x="275" y="285">Qt inheritance</text>
+
+  <path class="inherit" d="M215 650 L720 250"/>
+  <path class="inherit" d="M535 650 L770 250"/>
+  <path class="inherit" d="M865 650 L835 250"/>
+  <text class="label" x="535" y="560">New non-Qt inheritance</text>
+
+  <!-- Composition/usage arrows -->
+  <path class="comp" d="M380 410 L420 410"/>
+  <path class="comp" d="M705 430 L745 430"/>
+  <path class="comp" d="M1105 430 L1145 430"/>
+  <path class="comp" d="M925 555 L1190 650"/>
+  <path class="comp" d="M1225 855 L405 970"/>
+  <path class="assoc" d="M1225 650 L215 795"/>
+  <path class="assoc" d="M1225 650 L535 795"/>
+  <path class="assoc" d="M1225 650 L865 795"/>
+  <path class="assoc" d="M1400 750 L1435 750"/>
+  <path class="assoc" d="M535 795 L405 970"/>
+  <path class="assoc" d="M850 970 L600 1065"/>
+  <path class="assoc" d="M600 1065 L1100 1065"/>
+  <path class="assoc" d="M1435 795 L1295 970"/>
+
+  <text class="label" x="950" y="610">MainPage uses core and data classes</text>
+  <text class="label" x="1085" y="895">MealAnalyzer coordinates parser, matcher, converter, engine</text>
+  <text class="label" x="640" y="1210">DatabaseManager and USDAImporter use model structs for food and nutrient data</text>
+</svg>

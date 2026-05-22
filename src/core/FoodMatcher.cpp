@@ -9,6 +9,11 @@ FoodMatcher::FoodMatcher(DatabaseManager &databaseManager)
 {
 }
 
+QString FoodMatcher::componentName() const
+{
+    return "Food Matcher";
+}
+
 std::optional<FoodRecord> FoodMatcher::match(const ParsedFoodItem &item) const
 {
     const QString requested = normalize(item.foodName);

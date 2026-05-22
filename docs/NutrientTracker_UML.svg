@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1150" viewBox="0 0 1600 1150">
+  <defs>
+    <style>
+      .bg { fill: #f4f1f7; }
+      .title { font: 700 34px Arial, sans-serif; fill: #172033; }
+      .subtitle { font: 600 17px Arial, sans-serif; fill: #475569; }
+      .section { font: 700 19px Arial, sans-serif; fill: #334155; }
+      .box { fill: #eef8f5; stroke: #4aa3a1; stroke-width: 2; rx: 6; }
+      .header { fill: #fff2cf; stroke: #4aa3a1; stroke-width: 2; }
+      .className { font: 700 18px Arial, sans-serif; fill: #172033; }
+      .item { font: 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 13px Arial, sans-serif; fill: #475569; }
+      .line { stroke: #a85555; stroke-width: 2.5; fill: none; }
+      .dash { stroke: #64748b; stroke-width: 2; stroke-dasharray: 8 6; fill: none; }
+      .label { font: 13px Arial, sans-serif; fill: #7f1d1d; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a85555"/>
+    </marker>
+    <marker id="hollow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 1 6 L 11 1 L 11 11 z" fill="#f4f1f7" stroke="#64748b" stroke-width="1.8"/>
+    </marker>
+    <marker id="diamond" viewBox="0 0 14 14" refX="13" refY="7" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+      <path d="M 1 7 L 7 1 L 13 7 L 7 13 z" fill="#f4f1f7" stroke="#a85555" stroke-width="1.8"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1150"/>
+  <text class="title" x="800" y="48" text-anchor="middle">Nutrient Tracker App - UML Representation</text>
+  <text class="subtitle" x="800" y="78" text-anchor="middle">Qt interface classes, core nutrition logic, database layer, and model structs</text>
+
+  <text class="section" x="50" y="125">Qt Base Classes</text>
+  <rect class="box" x="50" y="145" width="210" height="76"/>
+  <rect class="header" x="50" y="145" width="210" height="32"/>
+  <text class="className" x="155" y="167" text-anchor="middle">QMainWindow</text>
+  <text class="item" x="65" y="200">Qt main window base</text>
+
+  <rect class="box" x="290" y="145" width="210" height="76"/>
+  <rect class="header" x="290" y="145" width="210" height="32"/>
+  <text class="className" x="395" y="167" text-anchor="middle">QWidget</text>
+  <text class="item" x="305" y="200">Qt visual widget base</text>
+
+  <text class="section" x="50" y="270">UI Layer</text>
+  <rect class="box" x="50" y="295" width="300" height="175"/>
+  <rect class="header" x="50" y="295" width="300" height="34"/>
+  <text class="className" x="200" y="318" text-anchor="middle">MainWindow</text>
+  <text class="item" x="68" y="352">- QStackedWidget* m_rootPages</text>
+  <text class="item" x="68" y="376">- WelcomePage* m_welcomePage</text>
+  <text class="item" x="68" y="400">- MainPage* m_mainPage</text>
+  <text class="item" x="68" y="432">+ showApplication()</text>
+  <text class="item" x="68" y="454">+ showPage(int)</text>
+
+  <rect class="box" x="390" y="295" width="285" height="150"/>
+  <rect class="header" x="390" y="295" width="285" height="34"/>
+  <text class="className" x="532" y="318" text-anchor="middle">WelcomePage</text>
+  <text class="item" x="408" y="352">+ WelcomePage(QWidget*)</text>
+  <text class="item" x="408" y="376">+ startRequested() signal</text>
+  <text class="item" x="408" y="408">Displays honors project intro</text>
+
+  <rect class="box" x="715" y="295" width="330" height="210"/>
+  <rect class="header" x="715" y="295" width="330" height="34"/>
+  <text class="className" x="880" y="318" text-anchor="middle">MainPage</text>
+  <text class="item" x="733" y="352">- DatabaseManager m_databaseManager</text>
+  <text class="item" x="733" y="376">- MealAnalyzer m_mealAnalyzer</text>
+  <text class="item" x="733" y="400">- QVector&lt;AnalyzedFoodItem&gt; m_loggedFoods</text>
+  <text class="item" x="733" y="432">+ setupFoodDatabase()</text>
+  <text class="item" x="733" y="456">+ handleFoodInput(bool)</text>
+  <text class="item" x="733" y="480">+ refreshDashboard()</text>
+
+  <rect class="box" x="1085" y="295" width="260" height="150"/>
+  <rect class="header" x="1085" y="295" width="260" height="34"/>
+  <text class="className" x="1215" y="318" text-anchor="middle">CalorieRing</text>
+  <text class="item" x="1103" y="352">- int m_progress</text>
+  <text class="item" x="1103" y="376">- int m_remaining</text>
+  <text class="item" x="1103" y="400"># paintEvent(QPaintEvent*)</text>
+  <text class="item" x="1103" y="424">Draws calorie circle</text>
+
+  <rect class="box" x="1380" y="295" width="180" height="105"/>
+  <rect class="header" x="1380" y="295" width="180" height="34"/>
+  <text class="className" x="1470" y="318" text-anchor="middle">AboutPage</text>
+  <text class="item" x="1395" y="352">+ AboutPage()</text>
+  <text class="item" x="1395" y="376">Info screen</text>
+
+  <text class="section" x="50" y="565">Core Logic Layer</text>
+  <rect class="box" x="530" y="590" width="340" height="210"/>
+  <rect class="header" x="530" y="590" width="340" height="34"/>
+  <text class="className" x="700" y="613" text-anchor="middle">MealAnalyzer</text>
+  <text class="item" x="548" y="646">- DatabaseManager&amp; m_databaseManager</text>
+  <text class="item" x="548" y="670">- InputParser m_parser</text>
+  <text class="item" x="548" y="694">- FoodMatcher m_matcher</text>
+  <text class="item" x="548" y="718">- UnitConverter m_converter</text>
+  <text class="item" x="548" y="742">- NutrientEngine m_engine</text>
+  <text class="item" x="548" y="774">+ analyze(QString) : AnalysisResult</text>
+
+  <rect class="box" x="50" y="615" width="250" height="125"/>
+  <rect class="header" x="50" y="615" width="250" height="34"/>
+  <text class="className" x="175" y="638" text-anchor="middle">InputParser</text>
+  <text class="item" x="68" y="674">+ parse(QString)</text>
+  <text class="item" x="68" y="698">- normalizeUnit(QString)</text>
+  <text class="small" x="68" y="724">Text to food items</text>
+
+  <rect class="box" x="330" y="615" width="250" height="125"/>
+  <rect class="header" x="330" y="615" width="250" height="34"/>
+  <text class="className" x="455" y="638" text-anchor="middle">FoodMatcher</text>
+  <text class="item" x="348" y="674">+ match(ParsedFoodItem)</text>
+  <text class="item" x="348" y="698">- scoreCandidate(...)</text>
+  <text class="small" x="348" y="724">Finds best food record</text>
+
+  <rect class="box" x="910" y="615" width="250" height="125"/>
+  <rect class="header" x="910" y="615" width="250" height="34"/>
+  <text class="className" x="1035" y="638" text-anchor="middle">UnitConverter</text>
+  <text class="item" x="928" y="674">+ toGrams(...)</text>
+  <text class="small" x="928" y="706">Converts cups, oz, lb,</text>
+  <text class="small" x="928" y="726">servings, units to grams</text>
+
+  <rect class="box" x="1190" y="615" width="330" height="125"/>
+  <rect class="header" x="1190" y="615" width="330" height="34"/>
+  <text class="className" x="1355" y="638" text-anchor="middle">NutrientEngine</text>
+  <text class="item" x="1208" y="674">+ scaleToGrams(...)</text>
+  <text class="item" x="1208" y="698">+ calculateTotals(...)</text>
+  <text class="small" x="1208" y="724">Scales and totals nutrients</text>
+
+  <text class="section" x="50" y="855">Data Layer</text>
+  <rect class="box" x="170" y="880" width="420" height="180"/>
+  <rect class="header" x="170" y="880" width="420" height="34"/>
+  <text class="className" x="380" y="903" text-anchor="middle">DatabaseManager</text>
+  <text class="item" x="188" y="936">- QSqlDatabase m_db</text>
+  <text class="item" x="188" y="960">+ initDatabase(QString*)</text>
+  <text class="item" x="188" y="984">+ searchFoods(QString, QString)</text>
+  <text class="item" x="188" y="1008">+ getFoodNutrients(int)</text>
+  <text class="item" x="188" y="1032">+ beginTransaction() / commitTransaction()</text>
+
+  <rect class="box" x="640" y="880" width="410" height="180"/>
+  <rect class="header" x="640" y="880" width="410" height="34"/>
+  <text class="className" x="845" y="903" text-anchor="middle">USDAImporter</text>
+  <text class="item" x="658" y="936">- DatabaseManager&amp; m_databaseManager</text>
+  <text class="item" x="658" y="960">- QHash&lt;int, QString&gt; categories</text>
+  <text class="item" x="658" y="984">+ importCsvDirectory(QString)</text>
+  <text class="item" x="658" y="1008">- importFoods() / importNutrients()</text>
+  <text class="item" x="658" y="1032">- forEachCsvRow(...)</text>
+
+  <text class="section" x="1115" y="855">Model Structs</text>
+  <rect class="box" x="1115" y="880" width="395" height="180"/>
+  <rect class="header" x="1115" y="880" width="395" height="34"/>
+  <text class="className" x="1312" y="903" text-anchor="middle">Domain and Nutrient Types</text>
+  <text class="item" x="1133" y="936">ParsedFoodItem</text>
+  <text class="item" x="1133" y="960">FoodRecord</text>
+  <text class="item" x="1133" y="984">NutrientValue</text>
+  <text class="item" x="1133" y="1008">AnalyzedFoodItem</text>
+  <text class="item" x="1133" y="1032">AnalysisResult</text>
+
+  <path class="dash" d="M 155 221 L 155 295" marker-end="url(#hollow)"/>
+  <path class="dash" d="M 395 221 L 532 295" marker-end="url(#hollow)"/>
+  <path class="dash" d="M 395 221 L 880 295" marker-end="url(#hollow)"/>
+  <path class="dash" d="M 395 221 L 1215 295" marker-end="url(#hollow)"/>
+  <path class="dash" d="M 395 221 L 1470 295" marker-end="url(#hollow)"/>
+  <text class="label" x="84" y="260">inherits</text>
+  <text class="label" x="436" y="260">inherits from QWidget</text>
+
+  <path class="line" d="M 350 370 L 390 370" marker-end="url(#diamond)"/>
+  <path class="line" d="M 350 410 L 715 410" marker-end="url(#diamond)"/>
+  <path class="line" d="M 1045 390 L 1085 390" marker-end="url(#diamond)"/>
+
+  <path class="line" d="M 880 505 L 710 590" marker-end="url(#diamond)"/>
+  <path class="line" d="M 700 590 L 295 675" marker-end="url(#arrow)"/>
+  <path class="line" d="M 700 590 L 455 615" marker-end="url(#arrow)"/>
+  <path class="line" d="M 870 695 L 910 695" marker-end="url(#arrow)"/>
+  <path class="line" d="M 870 670 L 1190 670" marker-end="url(#arrow)"/>
+  <path class="line" d="M 455 740 L 380 880" marker-end="url(#arrow)"/>
+  <path class="line" d="M 700 800 L 380 880" marker-end="url(#arrow)"/>
+  <path class="line" d="M 845 880 L 590 970" marker-end="url(#arrow)"/>
+  <path class="line" d="M 590 970 L 1115 970" marker-end="url(#arrow)"/>
+  <path class="line" d="M 1355 740 L 1312 880" marker-end="url(#arrow)"/>
+
+  <text class="label" x="913" y="542">MainPage uses MealAnalyzer and DatabaseManager</text>
+  <text class="label" x="552" y="838">Core logic uses database and model structs</text>
+</svg>

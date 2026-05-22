@@ -1,7 +1,18 @@
 #include "UnitConverter.h"
 
+#include <stdexcept>
+
+QString UnitConverter::componentName() const
+{
+    return "Unit Converter";
+}
+
 double UnitConverter::toGrams(const ParsedFoodItem &item, const FoodRecord &food) const
 {
+    if (item.quantity <= 0.0) {
+        throw std::invalid_argument("food quantity must be greater than zero");
+    }
+
     const QString unit = item.unit.toLower();
 
     if (unit == "g") {
@@ -25,4 +36,3 @@ double UnitConverter::toGrams(const ParsedFoodItem &item, const FoodRecord &food
 
     return item.quantity * food.gramsPerUnit;
 }
-

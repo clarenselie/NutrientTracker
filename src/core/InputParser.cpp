@@ -3,6 +3,11 @@
 #include <QRegularExpression>
 #include <QStringList>
 
+QString InputParser::componentName() const
+{
+    return "Input Parser";
+}
+
 QVector<ParsedFoodItem> InputParser::parse(const QString &input) const
 {
     QVector<ParsedFoodItem> items;
@@ -81,4 +86,3 @@ QString InputParser::normalizeUnit(const QString &unit) const
 
     return "unit";
 }
-

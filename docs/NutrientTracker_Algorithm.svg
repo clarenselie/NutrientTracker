@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1850" viewBox="0 0 1500 1850">
+  <defs>
+    <style>
+      .bg { fill: #f4f1f7; }
+      .title { font: 700 34px Arial, sans-serif; fill: #172033; }
+      .subtitle { font: 600 17px Arial, sans-serif; fill: #475569; }
+      .process { fill: #fff2cf; stroke: #2b8a8a; stroke-width: 3; rx: 6; }
+      .decision { fill: #fff2cf; stroke: #2b8a8a; stroke-width: 3; }
+      .startend { fill: #fff2cf; stroke: #2b8a8a; stroke-width: 3; }
+      .data { fill: #e7f8f3; stroke: #2b8a8a; stroke-width: 3; rx: 6; }
+      .text { font: 700 18px Arial, sans-serif; fill: #172033; }
+      .small { font: 15px Arial, sans-serif; fill: #334155; }
+      .arrow { stroke: #a85555; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .loop { stroke: #a85555; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .yesno { font: 700 15px Arial, sans-serif; fill: #7f1d1d; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a85555"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1500" height="1850"/>
+  <text class="title" x="750" y="48" text-anchor="middle">Nutrient Tracker App - Algorithm Flowchart</text>
+  <text class="subtitle" x="750" y="78" text-anchor="middle">How the app starts, checks the database, processes food input, and updates the dashboard</text>
+
+  <ellipse class="startend" cx="750" cy="130" rx="105" ry="38"/>
+  <text class="text" x="750" y="137" text-anchor="middle">Start</text>
+
+  <rect class="process" x="595" y="205" width="310" height="70"/>
+  <text class="text" x="750" y="233" text-anchor="middle">Open Nutrient Tracker</text>
+  <text class="small" x="750" y="257" text-anchor="middle">main.cpp launches Qt app</text>
+
+  <rect class="process" x="595" y="315" width="310" height="70"/>
+  <text class="text" x="750" y="343" text-anchor="middle">Display Welcome Page</text>
+  <text class="small" x="750" y="367" text-anchor="middle">Project topic and Start button</text>
+
+  <polygon class="decision" points="750,430 900,505 750,580 600,505"/>
+  <text class="text" x="750" y="497" text-anchor="middle">Is Start</text>
+  <text class="text" x="750" y="522" text-anchor="middle">clicked?</text>
+
+  <rect class="process" x="595" y="635" width="310" height="70"/>
+  <text class="text" x="750" y="663" text-anchor="middle">Show Main Dashboard</text>
+  <text class="small" x="750" y="687" text-anchor="middle">MainPage is displayed</text>
+
+  <rect class="data" x="595" y="745" width="310" height="86"/>
+  <text class="text" x="750" y="776" text-anchor="middle">Initialize SQLite</text>
+  <text class="small" x="750" y="801" text-anchor="middle">DatabaseManager opens</text>
+  <text class="small" x="750" y="821" text-anchor="middle">nutrient database</text>
+
+  <polygon class="decision" points="750,875 930,960 750,1045 570,960"/>
+  <text class="text" x="750" y="952" text-anchor="middle">Is food database</text>
+  <text class="text" x="750" y="977" text-anchor="middle">available?</text>
+
+  <rect class="process" x="1015" y="905" width="340" height="110"/>
+  <text class="text" x="1185" y="936" text-anchor="middle">Find bundled database</text>
+  <text class="small" x="1185" y="962" text-anchor="middle">Look for nutrient_tracker.sqlite</text>
+  <text class="small" x="1185" y="984" text-anchor="middle">inside app or data folder</text>
+
+  <polygon class="decision" points="1185,1065 1345,1140 1185,1215 1025,1140"/>
+  <text class="text" x="1185" y="1132" text-anchor="middle">File found?</text>
+
+  <rect class="process" x="1005" y="1265" width="360" height="90"/>
+  <text class="text" x="1185" y="1298" text-anchor="middle">Copy database into</text>
+  <text class="text" x="1185" y="1323" text-anchor="middle">app data folder</text>
+
+  <rect class="process" x="1005" y="1410" width="360" height="85"/>
+  <text class="text" x="1185" y="1443" text-anchor="middle">Show missing database</text>
+  <text class="text" x="1185" y="1468" text-anchor="middle">message</text>
+
+  <rect class="process" x="595" y="1095" width="310" height="84"/>
+  <text class="text" x="750" y="1127" text-anchor="middle">User enters food</text>
+  <text class="small" x="750" y="1152" text-anchor="middle">Example: 2 eggs, rice</text>
+
+  <polygon class="decision" points="750,1225 930,1310 750,1395 570,1310"/>
+  <text class="text" x="750" y="1302" text-anchor="middle">Add Food or</text>
+  <text class="text" x="750" y="1327" text-anchor="middle">Preview clicked?</text>
+
+  <polygon class="decision" points="750,1440 910,1515 750,1590 590,1515"/>
+  <text class="text" x="750" y="1507" text-anchor="middle">Is input</text>
+  <text class="text" x="750" y="1532" text-anchor="middle">empty?</text>
+
+  <rect class="process" x="250" y="1475" width="280" height="80"/>
+  <text class="text" x="390" y="1508" text-anchor="middle">Show message:</text>
+  <text class="text" x="390" y="1533" text-anchor="middle">Enter a food</text>
+
+  <rect class="process" x="595" y="1630" width="310" height="80"/>
+  <text class="text" x="750" y="1663" text-anchor="middle">Confirm food input</text>
+  <text class="small" x="750" y="1688" text-anchor="middle">User clicks Yes or No</text>
+
+  <polygon class="decision" points="750,1750 910,1825 750,1900 590,1825" transform="translate(0,-20)"/>
+  <text class="text" x="750" y="1798" text-anchor="middle">User clicked</text>
+  <text class="text" x="750" y="1823" text-anchor="middle">Yes?</text>
+
+  <rect class="process" x="155" y="1655" width="330" height="80"/>
+  <text class="text" x="320" y="1688" text-anchor="middle">Allow user to edit</text>
+  <text class="text" x="320" y="1713" text-anchor="middle">the food input</text>
+
+  <rect class="process" x="80" y="905" width="380" height="95"/>
+  <text class="text" x="270" y="938" text-anchor="middle">Parse input into items</text>
+  <text class="small" x="270" y="963" text-anchor="middle">InputParser separates food name,</text>
+  <text class="small" x="270" y="985" text-anchor="middle">quantity, and unit</text>
+
+  <rect class="data" x="80" y="1040" width="380" height="95"/>
+  <text class="text" x="270" y="1073" text-anchor="middle">Search SQLite database</text>
+  <text class="small" x="270" y="1098" text-anchor="middle">FoodMatcher asks DatabaseManager</text>
+  <text class="small" x="270" y="1120" text-anchor="middle">for matching foods</text>
+
+  <polygon class="decision" points="270,1175 430,1250 270,1325 110,1250"/>
+  <text class="text" x="270" y="1242" text-anchor="middle">Was food</text>
+  <text class="text" x="270" y="1267" text-anchor="middle">found?</text>
+
+  <rect class="process" x="80" y="1360" width="380" height="85"/>
+  <text class="text" x="270" y="1392" text-anchor="middle">Convert amount to grams</text>
+  <text class="small" x="270" y="1418" text-anchor="middle">UnitConverter handles g, kg, oz,</text>
+
+  <rect class="data" x="80" y="1485" width="380" height="85"/>
+  <text class="text" x="270" y="1518" text-anchor="middle">Get nutrient values</text>
+  <text class="small" x="270" y="1543" text-anchor="middle">DatabaseManager retrieves per-100g data</text>
+
+  <rect class="process" x="80" y="1610" width="380" height="85"/>
+  <text class="text" x="270" y="1643" text-anchor="middle">Scale and total nutrients</text>
+  <text class="small" x="270" y="1668" text-anchor="middle">NutrientEngine calculates totals</text>
+
+  <polygon class="decision" points="270,1735 430,1810 270,1885 110,1810" transform="translate(0,-80)"/>
+  <text class="text" x="270" y="1723" text-anchor="middle">Add Food</text>
+  <text class="text" x="270" y="1748" text-anchor="middle">clicked?</text>
+
+  <rect class="process" x="520" y="1370" width="350" height="85"/>
+  <text class="text" x="695" y="1403" text-anchor="middle">Show warning or</text>
+  <text class="text" x="695" y="1428" text-anchor="middle">food suggestion</text>
+
+  <rect class="process" x="520" y="1510" width="350" height="85"/>
+  <text class="text" x="695" y="1543" text-anchor="middle">Show nutrient preview</text>
+  <text class="small" x="695" y="1568" text-anchor="middle">Food is not saved</text>
+
+  <rect class="process" x="520" y="1645" width="350" height="105"/>
+  <text class="text" x="695" y="1678" text-anchor="middle">Add food to daily log</text>
+  <text class="small" x="695" y="1703" text-anchor="middle">Recent foods list is updated</text>
+  <text class="small" x="695" y="1725" text-anchor="middle">Dashboard totals refresh</text>
+
+  <rect class="process" x="520" y="1785" width="350" height="85"/>
+  <text class="text" x="695" y="1818" text-anchor="middle">Update dashboard output</text>
+  <text class="small" x="695" y="1843" text-anchor="middle">Calories, macros, nutrient table</text>
+
+  <ellipse class="startend" cx="1185" cy="1665" rx="105" ry="38"/>
+  <text class="text" x="1185" y="1672" text-anchor="middle">Stop</text>
+
+  <path class="arrow" d="M 750 168 L 750 205"/>
+  <path class="arrow" d="M 750 275 L 750 315"/>
+  <path class="arrow" d="M 750 385 L 750 430"/>
+  <path class="arrow" d="M 750 580 L 750 635"/>
+  <text class="yesno" x="775" y="612">Yes</text>
+
+  <path class="loop" d="M 600 505 L 500 505 L 500 350 L 595 350"/>
+  <text class="yesno" x="520" y="492">No</text>
+
+  <path class="arrow" d="M 750 705 L 750 745"/>
+  <path class="arrow" d="M 750 831 L 750 875"/>
+  <path class="arrow" d="M 930 960 L 1015 960"/>
+  <text class="yesno" x="950" y="940">No</text>
+  <path class="arrow" d="M 1185 1015 L 1185 1065"/>
+  <path class="arrow" d="M 1185 1215 L 1185 1265"/>
+  <text class="yesno" x="1210" y="1238">Yes</text>
+  <path class="arrow" d="M 1025 1140 L 950 1140 L 950 1452 L 1005 1452"/>
+  <text class="yesno" x="966" y="1120">No</text>
+  <path class="loop" d="M 1185 1355 L 1185 1380 L 930 1380 L 930 1137 L 905 1137"/>
+  <path class="loop" d="M 1005 1452 L 930 1452 L 930 1137 L 905 1137"/>
+
+  <path class="arrow" d="M 750 1045 L 750 1095"/>
+  <text class="yesno" x="775" y="1075">Yes</text>
+  <path class="arrow" d="M 750 1179 L 750 1225"/>
+  <path class="arrow" d="M 750 1395 L 750 1440"/>
+  <text class="yesno" x="775" y="1422">Yes</text>
+  <path class="loop" d="M 570 1310 L 520 1310 L 520 1137 L 595 1137"/>
+  <text class="yesno" x="528" y="1292">No</text>
+
+  <path class="arrow" d="M 590 1515 L 530 1515"/>
+  <text class="yesno" x="552" y="1495">Yes</text>
+  <path class="loop" d="M 390 1555 L 390 1605 L 520 1605 L 520 1137 L 595 1137"/>
+  <path class="arrow" d="M 750 1590 L 750 1630"/>
+  <text class="yesno" x="776" y="1612">No</text>
+
+  <path class="arrow" d="M 590 1805 L 485 1805 L 485 952 L 460 952"/>
+  <text class="yesno" x="530" y="1784">Yes</text>
+  <path class="arrow" d="M 590 1805 L 485 1805 L 485 1695"/>
+  <text class="yesno" x="522" y="1828">No</text>
+  <path class="loop" d="M 320 1735 L 320 1770 L 520 1770 L 520 1137 L 595 1137"/>
+
+  <path class="arrow" d="M 270 1000 L 270 1040"/>
+  <path class="arrow" d="M 270 1135 L 270 1175"/>
+  <path class="arrow" d="M 270 1325 L 270 1360"/>
+  <text class="yesno" x="295" y="1345">Yes</text>
+  <path class="arrow" d="M 430 1250 L 695 1250 L 695 1370"/>
+  <text class="yesno" x="450" y="1230">No</text>
+  <path class="loop" d="M 695 1455 L 695 1480 L 520 1480 L 520 1137 L 595 1137"/>
+  <path class="arrow" d="M 270 1445 L 270 1485"/>
+  <path class="arrow" d="M 270 1570 L 270 1610"/>
+  <path class="arrow" d="M 270 1695 L 270 1655"/>
+  <path class="arrow" d="M 430 1730 L 520 1552"/>
+  <text class="yesno" x="450" y="1692">No</text>
+  <path class="arrow" d="M 430 1730 L 520 1697"/>
+  <text class="yesno" x="452" y="1740">Yes</text>
+  <path class="arrow" d="M 695 1750 L 695 1785"/>
+  <path class="loop" d="M 870 1828 L 930 1828 L 930 1137 L 905 1137"/>
+  <path class="arrow" d="M 1355 1452 L 1390 1452 L 1390 1665 L 1290 1665"/>
+</svg>

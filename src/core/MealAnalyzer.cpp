@@ -1,5 +1,7 @@
 #include "MealAnalyzer.h"
 
+#include <exception>
+
 MealAnalyzer::MealAnalyzer(DatabaseManager &databaseManager)
     : m_databaseManager(databaseManager)
     , m_matcher(databaseManager)
@@ -23,7 +25,15 @@ AnalysisResult MealAnalyzer::analyze(const QString &input) const
             continue;
         }
 
-        const double grams = m_converter.toGrams(parsed, matchedFood.value());
+        double grams = 0.0;
+        try {
+            grams = m_converter.toGrams(parsed, matchedFood.value());
+        } catch (const std::exception &exception) {
+            result.warnings.append(
+                "Skipped " + parsed.foodName + ": " + QString::fromUtf8(exception.what()) + ".");
+            continue;
+        }
+
         if (grams <= 0.0) {
             result.warnings.append("Skipped " + parsed.foodName + " because its quantity was invalid.");
             continue;
@@ -47,4 +57,3 @@ AnalysisResult MealAnalyzer::analyze(const QString &input) const
 
     return result;
 }
-
