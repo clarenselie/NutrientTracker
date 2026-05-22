@@ -1,45 +1,148 @@
 # Nutrient Tracker
 
-A Qt Widgets nutrient tracker built in C++.
+Nutrient Tracker is a C++ desktop application built with Qt Widgets. It lets a user type foods such as `2 eggs, 1 cup rice, banana`, matches those foods to a USDA-backed SQLite database, converts the amounts into grams, and displays calories, macros, vitamins, minerals, and daily totals.
 
-## What it does
+## Features
 
-- Parses meal text such as `2 eggs, 1 cup rice, banana`
-- Matches foods from a bundled USDA-backed SQLite database
-- Converts quantities to grams
-- Calculates macro, mineral, vitamin, and advanced nutrient totals
-- Shows unmatched foods so they can be fixed quickly
+- Parse natural food input into food names, quantities, and units
+- Search foods in a local SQLite nutrition database
+- Convert grams, kilograms, ounces, pounds, cups, servings, and units
+- Calculate calories, protein, carbs, fat, fiber, vitamins, and minerals
+- Show a daily food log and nutrient breakdown dashboard
+- Handle unmatched foods, invalid quantities, and missing database setup gracefully
+
+## Requirements
+
+- CMake 3.16 or newer
+- C++17 compiler
+- Qt 6 or Qt 5 with these modules:
+  - Qt Widgets
+  - Qt SQL
+- SQLite driver for Qt, usually included with desktop Qt kits
+- Qt Creator is recommended
+
+## Project Structure
+
+```text
+src/main.cpp          Starts the app or database builder
+src/models/          Shared food, nutrient, and analysis data structs
+src/data/            SQLite database setup and USDA CSV importer
+src/core/            Input parsing, food matching, unit conversion, nutrient math
+src/ui/              Qt windows, pages, dashboard, and widgets
+docs/                UML and algorithm diagrams
+scripts/             Database helper scripts
+data/README.md       Notes about nutrition data setup
+```
+
+## Important Database Note
+
+The full nutrition database is not included in this GitHub repository because it is too large.
+
+Ignored files include:
+
+```text
+data/nutrient_tracker.sqlite
+data/usda/
+```
+
+To run the app with real food results, you need one of these:
+
+1. A prebuilt `nutrient_tracker.sqlite` file placed at:
+
+   ```text
+   data/nutrient_tracker.sqlite
+   ```
+
+2. The raw USDA FoodData Central CSV files placed in:
+
+   ```text
+   data/usda/
+   ```
+
+Then build the database using the instructions below.
+
+USDA data source: https://fdc.nal.usda.gov/download-datasets.html
 
 ## Open in Qt Creator
 
-1. Open Qt Creator.
-2. Choose `Open Project`.
-3. Select [CMakeLists.txt](/Users/clarensguibbs/Documents/New project 3/CMakeLists.txt).
-4. Configure with a desktop Qt kit that includes `Qt Widgets` and `Qt SQL`.
-5. Build and run `NutrientTracker`.
+1. Clone or download this repository.
+2. Open Qt Creator.
+3. Choose `File > Open File or Project`.
+4. Select this file from the project folder:
 
-## Food database setup
+   ```text
+   CMakeLists.txt
+   ```
 
-The desktop app should not import the raw 3 GB USDA CSV export on user startup.
-Build the SQLite food database once as the developer, then bundle that finished file.
+5. Select a desktop Qt kit.
+6. Use a fresh build directory, for example:
+
+   ```text
+   build-qtcreator
+   ```
+
+7. Click `Configure Project`.
+8. Build and run the `NutrientTracker` target.
+
+If Qt Creator cannot find Qt, set `CMAKE_PREFIX_PATH` to your Qt installation. On some macOS Homebrew setups, this may look like:
+
+```bash
+-DCMAKE_PREFIX_PATH=/opt/homebrew/lib/cmake/Qt6
+```
+
+## Build from Terminal
 
 From the project folder:
 
 ```bash
-./build/NutrientTracker.app/Contents/MacOS/NutrientTracker --build-food-db data/usda data/nutrient_tracker.sqlite
+cmake -S . -B build-qtcreator
+cmake --build build-qtcreator
 ```
 
-After that file exists, rebuild in Qt Creator. CMake copies
-`data/nutrient_tracker.sqlite` into the app bundle. On user startup, the app
-silently installs that SQLite database into the user's app data folder.
+On macOS, the app will be built at:
 
-## Example input
+```text
+build-qtcreator/NutrientTracker.app
+```
 
-- `2 eggs, 1 cup rice, banana`
-- `1 serving sun chips`
-- `1.5 cups oatmeal, 2 bananas`
+## Build the Food Database
 
-## Notes
+If you have the raw USDA CSV export in `data/usda/`, build the SQLite database with:
 
-Keep raw USDA CSV files in `data/usda` only for building the SQLite database.
-Do not ship the raw CSV folder as the runtime database.
+```bash
+./build-qtcreator/NutrientTracker.app/Contents/MacOS/NutrientTracker --build-food-db data/usda data/nutrient_tracker.sqlite
+```
+
+After `data/nutrient_tracker.sqlite` is created, rebuild the app:
+
+```bash
+cmake --build build-qtcreator
+```
+
+CMake will copy the SQLite database into the app bundle. When the app starts, it installs the bundled database into the user's app data folder.
+
+## Example Inputs
+
+```text
+2 eggs, 1 cup rice, banana
+1 serving sun chips
+1.5 cups oatmeal, 2 bananas
+```
+
+## Troubleshooting
+
+If you copied the project folder and Qt Creator gives a CMake cache warning, delete the old build folder or choose a new build directory.
+
+If the app opens but food search does not work, make sure this file exists:
+
+```text
+data/nutrient_tracker.sqlite
+```
+
+If you see an `appman-controller` error in Qt Creator, switch the run/deploy configuration back to the normal desktop run configuration instead of Qt Application Manager.
+
+## Credits
+
+- GUI framework: Qt
+- Local database: SQLite
+- Nutrition data: USDA FoodData Central
